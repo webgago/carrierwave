@@ -124,7 +124,7 @@ module CarrierWave
     def remove_previous(before=nil, after=nil)
       return unless before
 
-      before = before.reject(&:blank?).map do |value|
+      before = Array.wrap(before).reject(&:blank?).map do |value|
         if value.is_a?(String)
           uploader = blank_uploader
           uploader.retrieve_from_store!(value)
